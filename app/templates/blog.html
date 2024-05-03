@@ -1,54 +1,102 @@
-{% extends 'base.html' %}
-
-{% block body %}
-
-{% if blog %}
-    {{moment(blog.create_date).calendar()}} by {{blog.author.fname}} {{blog.author.lname}} 
-    {% if blog.modifydate %}
-        modified {{moment(blog.modifydate).calendar()}}
-    {% endif %}
-    <br>
-    {% if blog.author == current_user %}
-        <a data-toggle="tooltip" data-placement="top" title="Delete Blog" href="/blog/delete/{{blog.id}}">
-            <img width="40" class="bottom-image" src="/static/delete.png">
-        </a>
-        <a data-toggle="tooltip" data-placement="top" title="Edit Blog" href="/blog/edit/{{blog.id}}">
-            <img width="40" class="bottom-image" src="/static/edit.png">
-        </a>
-    {% endif %}
-
-    <h1 class="display-5">{{blog.subject}}</h1>
-    <p class="fs-3 text-break">
+{% extends 'base.html' %} {% block body %}
+<br />
+<div class="row my-5">
+  {% if blog.author == current_user %}
+  <div class="col">
+    <div class="card border-success" style="margin-bottom: 10px">
+      <div class="col" style="margin: 10px">
         {% if blog.author.image %}
-            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(blog.author.image.read())}}">
-        {% endif %}
-            {{blog.content}} <br>
-            {{blog.tag}}
+        <img
+          width="120"
+          class="img-thumbnail float-start me-2"
+          src="data:image;base64,{{base64encode(blog.author.image.read())}}"
+        />
 
-    </p>
-    <a href="/comment/new/{{blog.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
-
-    {% if comments %}
-    <h1 class="display-5">Comments</h1>
-    {% for comment in comments %}
-        {% if current_user == comment.author %}
-            <a href="/comment/delete/{{comment.id}}"><img width="20" src="/static/delete.png"></a> 
-            <a href="/comment/edit/{{comment.id}}"><img width="20" src="/static/edit.png"></a>
-        {% endif %}
-        {{moment(comment.create_date).calendar()}} {{comment.author.username}} 
-        {% if comment.modifydate %}
-            modified {{moment(comment.modifydate).calendar()}}
-        {% endif %}
-        <br>
-        <p class="fs-3">
-            {{comment.content}}
+        <div class="col">
+          <div class="d-flex flex-row-reverse">
+            <a
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Delete Blog"
+              href="/blog/delete/{{blog.id}}"
+              ><img width="40" class="float-right" src="/static/delete.png"
+            /></a>
+            <a
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Edit Blog"
+              href="/blog/edit/{{blog.id}}"
+            >
+              <img width="40" class="float-right" src="/static/edit.png" />
+            </a>
+          </div>
+          <div class="col"></div>
+          <div class="row">
+            <span class="text-success"
+              >{% if blog %} {{moment(blog.create_date).calendar()}} by
+              {{blog.author.username}} {% if blog.modifydate %} modified
+              {{moment(blog.modifydate).calendar()}} {% endif %}</span
+            >
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h1 class="display-5">Topic: {{blog.subject}}</h1>
+        <p class="fs-3 text-break">
+          Tags: {{blog.tag}} <br />
+          Feedback: {{blog.content}}
         </p>
-    {% endfor %}
-    {% else %}
-        <h1 class="display-5">No Comments</h1>
+        <div class="row">
+          <div class="col">
+            <h1 class="display-5">Comments</h1>
+          </div>
+          <div class="col"></div>
+          <div class="col-2">
+            <div class="d-flex flex-row-reverse">
+              <a
+                href="/comment/new/{{blog.id}}"
+                class="btn btn-success btn-sm mt-5 text-success"
+                data-placement="top"
+                role="button"
+                >Add Comment</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- The whole next section is for comments ON blog posts -->
+        <!-- If you are using this as a template, you'll probably delete the whole comment section -->
+      </div>
+    </div>
+    {% if comments %}
+      {% for comment in comments %}
+    <div class="card border-success" style="margin-bottom: 10px">
+      <div class="col">
+        {% if current_user == comment.author %}
+        <a href="/comment/delete/{{comment.id}}"
+          ><img width="20" src="/static/delete.png"
+        /></a>
+        <a href="/comment/edit/{{comment.id}}"
+          ><img width="20" src="/static/edit.png"
+        /></a>
+        {% endif %}
+        <span class="text-success">
+          {{moment(comment.create_date).calendar()}}
+          {{comment.author.username}}: {% if comment.modifydate %} modified
+          {{moment(comment.modifydate).calendar()}}: {% endif %}
+        </span>
+
+        <div class="card-body">
+          <p class="fs-3">{{comment.content}}</p>
+        </div>
+      </div>
+    </div>
+      
+    {% endfor %} {% else %}
+    <p></p>
     {% endif %}
-{% else %}
+  </div>
+</div>
 
-{% endif %}
-
-{% endblock %}
+{% endif %} {% else %} {% endif %} {% endblock %}

@@ -1,6 +1,4 @@
-{% extends "base.html" %}
-
-{% block body %}
+{% extends "base.html" %}{% block body %}
         <!--List all errors in a group at the top-->
         {% for field in form.errors %}
             {% for error in form.errors[field] %}
@@ -9,22 +7,71 @@
                 </div>
             {% endfor %}
         {% endfor %}
-
-        <h1 class="display-5">{{blog.subject}}</h1>
-        {{blog.content}} <br>
-        <h1 class="display-5">New Comment</h1>
-
-        <form method=post>
-            {{ form.hidden_tag() }}
+        <div class="card border-success" style="margin: 20px;">
+            <div class="col" style="margin: 10px;">
+                <h1 class="display-5" style="color: #8ec454;">Comment:</h1>
+        </div>
+            <div class="card-body">
             
-            {{ form.content.label }} <br>
-            {{ form.content(cols=64) }}
-            <!--List the errors for this field-->
-            {% for error in form.content.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-            <br>
-            {{form.submit()}}
-        </form>
+                <div class="row my-5">
+                {% if blog.author == current_user %}
+                <div class="col">
+                  <div class="card border-success" style="margin-bottom: 10px;">
+                    <div class="col" style="margin: 10px;">
+                      {% if blog.author.image %}
+                      <img
+                        width="120"
+                        class="img-thumbnail float-start me-2"
+                        src="data:image;base64,{{base64encode(blog.author.image.read())}}"
+                      />
+              
+                      <div class="col">
+                        
+                        <div class="col"></div>
+                        <div class="row">
+              
+                          <span class="text-success">{% if blog %}
+                            {{moment(blog.create_date).calendar()}} by {{blog.author.username}}
+                             {% if blog.modifydate %} modified
+                            {{moment(blog.modifydate).calendar()}} {% endif %}</span>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h1 class="display-5">Topic: {{blog.subject}}</h1>
+                        <p class="fs-3 text-break">
+                          Tags: {{blog.tag}} <br>
+                          Feedback: {{blog.content}}</p>
+                          </div>
+                  </div>
+                </div>
+              </div>
+              <p >
+                <h1 class="display-5">New Comment</h1>
+        
+                <form method=post>
+                    {{ form.hidden_tag() }}
+                    
+                    {{ form.content.label }} <br>
+                    {{ form.content(cols=64) }}
+                    <!--List the errors for this field-->
+                    {% for error in form.content.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                    <br>
+                    {{form.submit()}}
+                </form>
+            </p> 
+            </div>
+
+
+        </div>      
+        </div>
+
+              {% endif %} {% else %} {% endif %} 
+        
+
+       
         
 {% endblock %}

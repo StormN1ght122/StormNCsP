@@ -28,30 +28,33 @@ class User(UserMixin, Document):
     username = StringField()
     fname = StringField()
     lname = StringField()
+    username = StringField()
+    phonenum = IntField()
     email = EmailField()
     image = FileField()
     prononuns = StringField()
     adult_fname = StringField()
     adult_lname = StringField()
     adult_email = StringField()
+    about = StringField()
     consent = BooleanField(default=False)
 
     meta = {
         'ordering': ['lname','fname']
     }
 
-class Sleep(Document):
-    sleeper = ReferenceField('User',reverse_delete_rule=CASCADE)
+class Schedule(Document):
+    scheduleer = ReferenceField('User',reverse_delete_rule=CASCADE)
     rating = IntField()
     feel = IntField()
     start = DateTimeField()
     end = DateTimeField()
-    sleep_date = DateTimeField()
+    schedule_date = DateTimeField()
     hours = FloatField()
-    minstosleep = IntField()
+    minstoschedule = IntField()
 
     meta = {
-        'ordering': ['sleep_date']
+        'ordering': ['schedule_date']
     }
     
 class Blog(Document):
@@ -80,3 +83,26 @@ class Comment(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+class Hangout(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+    name = StringField()
+    streetAddress = StringField()
+    city = StringField()
+    state = StringField()
+    zipcode = StringField()
+    activites = StringField()
+    #groupRating = StringField()
+    rating = StringField()
+    lat = FloatField()
+    lon = FloatField()
+    #himage=FileField()
+    
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+
+    

@@ -7,6 +7,13 @@
     <form action="" method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=64) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
             {{ form.fname.label }}<br>
             {{ form.fname(size=64) }}<br>
             {% for error in form.fname.errors %}
@@ -20,13 +27,27 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <p>
+            {{ form.phonenum.label }}<br>
+            {{ form.phonenum() }}<br>
+            {% for error in form.phonenum.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
 
+        <p>
+            {{ form.about.label }}<br>
+            {{ form.about() }}<br>
+            {% for error in form.about.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
         <p>
             {{ form.image.label }}<br>
             {% if current_user.image %}
                 <img class="img-thumbnail" width="100" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>
             {% else %}
-                <img class="img-thumbnail" width = "100" src="/static/bdog.png">
+                <img class="img-thumbnail" width = "100" src="https://cdn.glitch.global/07160b18-f07b-4179-b36f-334cd3ac7c1e/3e6e68ca-98ff-4fdc-b512-313a33286026.image.png?v=1712360497727">
             {% endif %} <br>
             {{ form.image() }}<br>
             {% for error in form.image.errors %}
@@ -34,6 +55,7 @@
             {% endfor %}
         </p>
         <p>{{ form.submit() }}</p>
+        
     </form>
 
 {% endblock %}

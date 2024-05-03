@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if schedule %}
+    {% if schedule.scheduleer == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete Schedule" href="/schedule/delete/{{schedule.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Edit Schedule" href="/schedule/edit/{{schedule.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
+    {% endif %}
+    <h1 class="display-2">{{schedule.scheduleer.fname}} {{schedule.scheduleer.lname}} </h1>
+    <h1 class="display-5">{{moment(schedule.schedule_date).format('MMMM Do YYYY')}}</h1>
+    <p class="fs-3 text-break">
+        {% if schedule.scheduleer.image %}
+            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(schedule.scheduleer.image.read())}}">
+        {% endif %}
+            Hours: {{schedule.hours}} <br>
+            Start: {{schedule.start}} <br>
+            End: {{schedule.end}} <br>
+            Rating: {{schedule.rating}} <br>
+            How I felt: {{schedule.feel}} <br>
+            Minutes to schedule: {{schedule.minstoschedule}}
+            
+{% else %}
+    Calendar is empty for now
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col">
+        <h1 class="display-4 text-center">Hangouts</h1><br>
+    </div>
+    <ht></ht>
+<!--Maps stylesheet-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0-beta.1/leaflet.css" />
+<!--this is where the javascript will insert the map-->
+<div id="map" class="mSize"></div>
+<!--link the javascript library-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0-beta.1/leaflet.js"></script>
+<script type="text/javascript">
+    // The first parameter are the coordinates of the center of the map
+    // The second parameter is the zoom level
+    var map = L.map('map').setView([37.8323039, -122.2575883], 13);
+    
+    // {s}, {z}, {x} and {y} are placeholders for map tiles
+    // {x} and {y} are the x/y of where you are on the map
+    // {z} is the zoom level
+    // {s} is the subdomain of cartodb
+    // 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png'
+    // 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    
+
+    var layer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+    });
+    
+    // Now add the layer onto the map
+    map.addLayer(layer);
+    
+    // It even opens up a popup when you click it!
+    {% for hangout in hangouts %}
+       {% if hangout.lat and hangout.lon %}
+           // Add your fields to the ppup on the next line.
+           L.marker(['{{hangout.lat}}', '{{hangout.lon}}']).addTo(map).bindPopup("<strong>{{hangout.name}}<br>{{hangout.streetAddress}}<br>{{hangout.city}},{{hangout.state}}  {{hangout.zipcode}}<br>Activ's: {{hangout.activites}}</strong>").openPopup();
+       {% endif %}
+    {% endfor %}
+    
+    // this is a way to add a marker that ALWAYS shows up.
+    //L.marker([37.8323039, -122.2575883]).addTo(map).bindPopup("<strong>Oakland Tech</strong>").openPopup();-->
+    </script>
+<!--<a href="/hangout/new" class="btn btn-primary btn-sm mt-5" role="button">Suggest Hangout</a>-->
+</div>
+
+<br>
+
+<!--Card-->
+<div class="row my-5 justify-content-center">
+    {% if hangouts %}
+      {% for hangout in hangouts %}
+          <div class="col">
+              <div class="card border-success" style="width: 18rem,">
+
+          
+              <img
+                src="..."
+                class="card-img-top"
+                alt="..."
+              />
+              
+              <div class="card-body">
+                  <h3>Name:</h3>
+                  {{hangout.name}}
+                <br>
+                <br>  
+                  
+                  <h3>Address:</h3>
+                  {{hangout.streetAddress}},
+                  {{hangout.city}},
+                  {{hangout.state}},
+                  {{hangout.zipcode}}
+                <br>
+                <br>
+
+                  <h3>Rating:</h3>
+                  {{hangout.rating}}
+                <br>
+                <br>
+
+                  <h3>Activites:</h3>
+                  {{hangout.activites}}
+                <br>
+                <br>
+            
+                  <h3>Created:</h3>
+                  {{moment(hangout.createdate).calendar()}}
+
+                <br>
+                <br>
+                  <a data-toggle="tooltip" data-placement="top" title="Edit Hangout" href="/hangout/edit/{{hangout.id}}"><img width="20" class="float-right" src="/static/edit.png"></a>
+                  <a data-toggle="tooltip" data-placement="top" title="Delete Hangout" href="/hangout/delete/{{hangout.id}}"><img width="20" class="float-left" src="/static/delete.png"></a>
+                  <div class="col-1">
+                  
+                
+    
+                </div>
+              </div>
+          </div>   
+  
+      </div>
+     
+      {% endfor %}
+  {% else %}
+      <h1>No hangouts currently...</h1>
+  {% endif %}
+  </div>
+  
+  
+  {% endblock %}

@@ -1,82 +1,101 @@
+{% extends 'base.html' %} {% block body %}
+<!--Leafs
+<img
+  src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1177d997-54a5-47ed-8309-eb5d0285890a/ddwgtbw-a5b20e63-d015-4bcf-882a-ddf76a105f58.png/v1/fill/w_1280,h_854/falling_leaves_png_4_by_agusrockforlife_ddwgtbw-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODU0IiwicGF0aCI6IlwvZlwvMTE3N2Q5OTctNTRhNS00N2VkLTgzMDktZWI1ZDAyODU4OTBhXC9kZHdndGJ3LWE1YjIwZTYzLWQwMTUtNGJjZi04ODJhLWRkZjc2YTEwNWY1OC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.YUIkp3kR2YtDUiYTE5PbdTA6f9ZvZWzw-OEWYn7d1UQ"
+  class="rounded float-end"
+  width="200"
+  hieght="200"
+  alt="..."
+/>
+<img
+  src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1177d997-54a5-47ed-8309-eb5d0285890a/ddwgtbw-a5b20e63-d015-4bcf-882a-ddf76a105f58.png/v1/fill/w_1280,h_854/falling_leaves_png_4_by_agusrockforlife_ddwgtbw-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODU0IiwicGF0aCI6IlwvZlwvMTE3N2Q5OTctNTRhNS00N2VkLTgzMDktZWI1ZDAyODU4OTBhXC9kZHdndGJ3LWE1YjIwZTYzLWQwMTUtNGJjZi04ODJhLWRkZjc2YTEwNWY1OC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.YUIkp3kR2YtDUiYTE5PbdTA6f9ZvZWzw-OEWYn7d1UQ"
+  class="rounded float-end"
+  width="200"
+  hieght="200"
+  alt="..."
+/>
 
+<img
+  src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1177d997-54a5-47ed-8309-eb5d0285890a/ddwgtbw-a5b20e63-d015-4bcf-882a-ddf76a105f58.png/v1/fill/w_1280,h_854/falling_leaves_png_4_by_agusrockforlife_ddwgtbw-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODU0IiwicGF0aCI6IlwvZlwvMTE3N2Q5OTctNTRhNS00N2VkLTgzMDktZWI1ZDAyODU4OTBhXC9kZHdndGJ3LWE1YjIwZTYzLWQwMTUtNGJjZi04ODJhLWRkZjc2YTEwNWY1OC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.YUIkp3kR2YtDUiYTE5PbdTA6f9ZvZWzw-OEWYn7d1UQ"
+  class="rounded float-start"
+  width="200"
+  hieght="200"
+  alt="..."
+/>
+
+<img
+  src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1177d997-54a5-47ed-8309-eb5d0285890a/ddwgtbw-a5b20e63-d015-4bcf-882a-ddf76a105f58.png/v1/fill/w_1280,h_854/falling_leaves_png_4_by_agusrockforlife_ddwgtbw-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODU0IiwicGF0aCI6IlwvZlwvMTE3N2Q5OTctNTRhNS00N2VkLTgzMDktZWI1ZDAyODU4OTBhXC9kZHdndGJ3LWE1YjIwZTYzLWQwMTUtNGJjZi04ODJhLWRkZjc2YTEwNWY1OC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.YUIkp3kR2YtDUiYTE5PbdTA6f9ZvZWzw-OEWYn7d1UQ"
+  class="rounded float-start"
+  width="200"
+  hieght="200"
+  alt="..."
+/>
+-->
+<br><br>
+<h1 class="display-4 text-center"><b>Welcome</b></h1>
+
+<h1 class="display-6 text-center"><b>to</b></h1>
+
+<h1 class="display-4 text-center"><b>Hangout Zone Locator</b></h1>
+
+<br>
+<div class="container">
   
-    {% extends 'base.html' %}
-
-
-{% block body %}
-    <div style="background-color: #9bbeeb;" >  
-
-      <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
-      <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
-
-      <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">
-    
-    <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">
-    
-    <h1 class="display-4 text-center ">Welcome!</h1>
-    
-    
-
-
-
-    <h1 class=" display-6 text-center"> to</h1>
-
-   
-
-
-    <h1 class="display-4 text-center"> Adolescent sleep tracker </h1>
-    <p></p>
-    <p></p>
-
-    <div class="container text-left display-7 text-center border border-5 whtie" >
-        <div class="row">
-        <div class="col">
-          <b> Our Misson statement:</b>
-          <p>A sleep tracker for students made by students, specialized for the patterns of students going from childhood to adolescence and bringing awareness to the overall severe effect of sleep deprivation on young brains. Also, draw attention to this problem so teachers and parents can look for signs in their students <p> </p></p>
-        </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col over over">
+      <p class="text-center" style="padding-top: 10px;">Our mission with this site is to help others socialize by allowing 
+        others to schdeule hangout areas to go to with others! This is to hopefully discourage others from using their phones to much
+        where it can be harmful for their socal skills development and mental health.
+      </p>
     </div>
-    </div>
-
-    <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
-    <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
-
-
-     
-    <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">
-    <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">
-
-          
-     
-<p></p>
-    <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-        <div class="carousel-item active">
-        <img src="/static/homeimg.jpg" class="d-block w-100" alt="..." width="400" height="500">
-      </div>
-      <div class="carousel-item">
-        <img src="/static/homeimg2.jpg" class="d-block w-100" alt="..."  width="400" height="500" >
-      </div>
-      <div class="carousel-item">
-        <img src="/static/homeimg3.jpg" class="d-block w-100" alt="..." width="400" height="500">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    <div class="col-1"></div>
   </div>
+</div>
+
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="https://media.istockphoto.com/id/841278554/photo/beautiful-morning-light-in-public-park-with-green-grass-field.jpg?s=612x612&w=0&k=20&c=rXOM3Uq9kPbpM5IWnCAnffHOP8KKpVKCJDMuNBlTNls="
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://static.nycgovparks.org/images/photo_gallery/full_size/19028.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://www.stpeteparksrec.org/images/parks/sylviaboring/1.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExample"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExample"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
 
-
-
-    
-    
-
-
-    
-
-    {% endblock %}
+{% endblock %}

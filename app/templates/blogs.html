@@ -1,46 +1,51 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+<!--<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
 
 <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
-<div class="row">
-    <div class="col-4">
-        <h1 class="display-1">Any Feedback for us?</h1>
-    </div>
-    <div class="col">
-        <a href="/blog/new" class="btn btn-primary btn-sm mt-5" role="button">Comment Button</a>
-    </div>
-</div>
+-->
+<h1 class="display-1"><br>Any Feedback for us?</h1>
+<a href="/blog/new" class="btn btn-success btn-sm mt-5 text-success" role="button">Add Feedback</a>
 
-{% if blogs %}
-    {% for blog in blogs %}
-        <div class="row border-bottom">
-            <div class="col-2">
-                {% if loop.index == 1 %}
-                <h3 class="display-5">Date</h3>
-                {% endif %}
 
-                <a href="/blog/{{blog.id}}">
-                    {{moment(blog.create_date).calendar()}}
-                </a>
-            </div>
-            <div class="col-2">
-                {% if loop.index == 1 %}
-                <h3 class="display-5">User</h3>
-                {% endif %}
-                {{blog.author.fname}} {{blog.author.lname}}
-            </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-5">Subject</h3>
-                {% endif %}
-                {{blog.subject}}
+<!--Card-->
+<div class="row my-5 justify-content-center">
+    {% if blogs %}
+      {% for blog in blogs %}
+          <div class="col">
+            <div class="card border-success" style="margin: 10px; width: 18rem,">
+              
+                <br>
+              
+              <!--<img
+                src="..."
+                class="card-img-top"
+                alt="..."
+              />
+              -->
+
+                <div class="card-body">
+                  <h3>User:</h3>
+                  {{blog.author.username}}
+                 <br>
+                  <h3>Created:</h3>
+                  {{moment(blog.create_date).calendar()}}
+                  
+                  <br>
+                  
+                  <a href="/blog/{{blog.id}}" class="btn btn-success btn-sm mt-5 text-success" role="button">See Post</a>
+
+                
+                
+                </div>
+
             </div>
         </div>
     {% endfor %}
 {% else %}
-
+                
 {% endif %}
-
+                
 {% endblock %}
+

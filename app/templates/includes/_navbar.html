@@ -1,52 +1,88 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
-  <div class="container-fluid mb-3">
-    <a class="navbar-brand .navbar-text display-5 text-black font-weight-bold fw-bold" href="/">Adolscent Sleep Tracker</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container-fluid mb-3"><br>
+    <a class="navbar-brand .navbar-text display-8" href="/"><img src="https://cdn.glitch.global/07160b18-f07b-4179-b36f-334cd3ac7c1e/logo-removebg-preview.png?v=1712596572167" class="icon" 
+    style="max-width: 100%; max-height: 100%;"></a>
+    
+    
+    <!--<a
+      class="navbar-brand .navbar-text display-8"
+      href="/"
+      ><img src="" class="icon" style="max-width: 15%;
+      max-height: 10%;"><span style="font-size: 23px;
+      margin: auto;
+      font-family: Arial, Helvetica, sans-serif; "> Hangout Zone Locator</span></a>
+    >-->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 display-8 text-black fw-bold" style="margin: 0% 37%;"> 
+      <ul
+        class="navbar-nav me-auto mb-2 mb-lg-0 display-8 text-black fw-bold"
+        style="margin: 0% auto">
+
         <li class="nav-item">
-          <a class="nav-link" href="/sleeps">Sleep</a>
+          <a class="nav-link" href="/hangout/list">Hangout</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="/sleep/new">New Sleep</a>
+          <a class="nav-link" href="/hangout/new">Add Zone</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/schedules">Schedule</a>
+
         <li class="nav-item">
           <a class="nav-link" href="/overview">Overview</a>
         </li>
-        <li class='nav-item'>
+        <li class="nav-item">
+          <a class="nav-link" href="/ourgoal">Our Goal</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/blogs">User Feedback</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/myprofile">Update Contact Information</a></li>
+            <li>
+              <a class="dropdown-item" href="/myprofile"
+                >Update  Information</a
+              >
+            </li>
           </ul>
         </li>
-        <li>
-      </li> 
+        <li></li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         {% if current_user.is_anonymous %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="/myprofile">
-              {{ current_user.gname }} 
-            </a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-          </li>
-          {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('login') }}">Login</a>
         </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="/myprofile">
+            {{ current_user.gname }} 
+          </a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </div>
-</nav>  
+</nav>

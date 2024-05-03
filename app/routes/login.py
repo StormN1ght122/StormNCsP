@@ -119,7 +119,7 @@ def callback():
         gprofile_pic = userinfo_response.json()["picture"]
         gname = userinfo_response.json()["name"]
         gfname = userinfo_response.json()["given_name"]
-        glname = userinfo_response.json()["family_name"]
+        # glname = userinfo_response.json()["family_name"]
     else:
         return "User email not available or not verified by Google.", 400
 
@@ -135,7 +135,7 @@ def callback():
             email=gmail, 
             gprofile_pic=gprofile_pic,
             fname = gfname,
-            lname = glname
+            # lname = glname
         )
         thisUser.save()
         thisUser.reload()
@@ -148,7 +148,7 @@ def callback():
             gname=gname, 
             gprofile_pic=gprofile_pic,
             fname = gfname,
-            lname = glname
+            # lname = glname
         )
     thisUser.reload()
 

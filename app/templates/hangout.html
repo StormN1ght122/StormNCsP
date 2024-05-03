@@ -1,0 +1,63 @@
+<!-- this is going to look WACKY i am in the midst of working on it. Sorry :( - Sylvie  -->
+
+{% extends 'base.html' %}
+
+    {% block body %}
+    
+    {% if hangout %}
+    
+    {{moment(hangout.createdate).calendar()}} by {{hangout.author.username}} 
+    {% if hangout.modifydate %}
+        modified {{moment(hangout.modifydate).calendar()}}
+    {% endif %}
+    <br>
+        
+        {% if hangout.author == current_user %}
+            <a data-toggle="tooltip" data-placement="top" title="Delete hangout" href="/hangout/delete/{{hangout.id}}">
+                <img width="40" class="bottom-image" src="/static/delete.png">
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit hangout" href="/hangout/edit/{{hangout.id}}">
+                <img width="40" class="bottom-image" src="/static/edit.png">
+            </a>
+        {% endif %}
+    
+        <h1 class="display-5">Name:  {{hangout.name}}</h1>
+        <p class="fs-3 text-break">
+                {{hangout.content}}
+        </p>
+        <p class="fs-3 text-break">
+            {% if hangout.author.image %}
+                <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(hangout.author.image.read())}}">
+            {% endif %}
+                {{hangout.content}}
+        </p>
+        <h1 class="display-5">
+            {{hangout.streetAddress}} <br>
+            {{hangout.city}} {{hangout.state}} {{hangout.zipcode}}
+        </h1>
+        <p class="fs-3 text-break"> 
+                {{hangout.content}}
+        </p>
+        <h1 class="display-5">Recommend activites: {{hangout.activites}}</h1>
+        <p class="fs-3 text-break">
+                {{hangout.content}}
+                
+    <a href="/blog/new" class="btn btn-success btn-sm mt-5 text-success" role="button">Comment Button</a>
+        </p>
+
+        <!-- <p class="display-5"> Recommended Group Size: {{hangout.groupRating}}</p> -->
+        
+    {% else %}
+        <h1 class="display-5">No hangout</h1>
+    {% endif %}
+        
+    {% endblock %}
+
+
+   <!--{% if hangout.author.image %}
+                <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(hangout.author.image.read())}}">
+            {% endif %} 
+            
+            this is the code for the images, i took it out of 
+            the code but even when the code was still there i didn't see the pictures for some reason---> 
+            

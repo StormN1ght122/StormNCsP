@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-4">
+        <h1 class="display-1">Calendar</h1>
+    </div>
+    <div class="col">
+        <a href="/schedule/new" class="btn btn-success btn-sm mt-5 text-success" role="button">schedule</a>
+        <!--<a href="/schedulegraph" class="btn btn-primary btn-sm mt-5" role="button">Graph it!</a>-->
+    </div>
+</div>
+
+
+<!-- Card -->
+
+<div class="row my-5 justify-content-center">
+  {% if schedules %}
+    {% for schedule in schedules %}
+        <div class="col">
+            <div class="card border-success" style="width: 18rem,">
+              
+
+            <img
+              src="..."
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+                <h3>User</h3>
+                {{schedule.scheduleer.username}}
+                <br>
+                
+
+                <h3>Start</h3>
+                {{schedule.start}}
+                <br>
+                
+
+                <h3>End</h3>
+                {{schedule.end}}
+                <br>
+                
+
+                <h3>Rated</h3>
+                {{schedule.rating}}
+                <br>
+                
+
+                <h3>Feel</h3>
+                {{schedule.feel}}
+                <br>
+                
+
+                <h3>People Joining:</h3>
+                {{schedule.minstoschedule}}
+
+                <br>
+                <br>
+                <a data-toggle="tooltip" data-placement="top" title="Edit Schedule" href="/schedule/edit/{{schedule.id}}"><img width="20" class="float-right" src="/static/edit.png"></a>
+                <a data-toggle="tooltip" data-placement="top" title="Delete Schedule" href="/schedule/delete/{{schedule.id}}"><img width="20" class="float-left" src="/static/delete.png"></a>
+                <div class="col-1">
+                
+    
+                </div>
+            </div>
+        </div>   
+
+    </div>
+    <!--
+    <div class="row border-bottom">
+
+        <div clas="col">
+                <a data-toggle="tooltip" data-placement="top" title="Delete Schedule" href="/schedule/delete/{{schedule.id}}">
+                    <img width="20" class="bottom-image" src="/static/delete.png">
+                </a>
+                <a data-toggle="tooltip" data-placement="top" title="Edit Schedule" href="/schedule/edit/{{schedule.id}}">
+                    <img width="20" class="bottom-image" src="/static/edit.png">
+                </a>
+        </div>
+
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3>Date</h3>
+                {% endif %}
+
+                <a href="/schedule/{{schedule.id}}">
+                    {{moment(schedule.schedule_date).format('MMMM Do YYYY')}}
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3>User</h3>
+                {% endif %}
+                {{schedule.scheduleer.fname}} {{schedule.scheduleer.lname}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3>Duration</h3>
+                {% endif %}
+                {{schedule.hours}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3>Start</h3>
+                {% endif %}
+                {{schedule.start}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3>End</h3>
+                {% endif %}
+                {{schedule.end}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3>Rated</h3>
+                {% endif %}
+                {{schedule.rating}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3>Feel</h3>
+                {% endif %}
+                {{schedule.feel}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3>People Joining:</h3>
+                {% endif %}
+                {{schedule.minstoschedule}}
+            </div>
+        </div><-->
+    {% endfor %}
+{% else %}
+    <h1>Nothing scheduled currently...</h1>
+{% endif %}
+</div>
+
+
+{% endblock %}
