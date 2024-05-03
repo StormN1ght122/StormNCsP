@@ -1,48 +1,61 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1 class="display-1">
-    My Profile
-    <a class="visible" href="/myprofile/edit">
-        <img width="40" src="/static/edit.png">
-    </a>
 
 
-</h1>
-<div class="row">
-    <div class="col-2">
+<br />
+<div class="row my-5">
+  <div class="col">
+    <div class="card border-success" style="margin-bottom: 10px">
+      <div class="col" style="margin: 10px">
+        <div class="d-flex flex-row-reverse" style="margin-bottom: 5px;">
+            <a
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Edit Profile"
+              href="/myprofile/edit"
+            >
+              <img width="40" class="float-right" src="/static/edit.png" />
+            </a>
+          </div>
         {% if current_user.image %}
-            <img class="img-thumbnail img-fluid" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>
+            <img class="img-thumbnail img-fluid" src="data:image;base64,{{base64encode(current_user.image.read())}}" style="max-width: 25%; height: auto;"> <br>
         {% else %}
             <img class="img-thumbnail" width = "100" src="https://cdn.glitch.global/07160b18-f07b-4179-b36f-334cd3ac7c1e/3e6e68ca-98ff-4fdc-b512-313a33286026.image.png?v=1712360497727">
         {% endif %} 
-    </div>
-    <div class="col display-5">
-        User: {{current_user.username}}<br>
-        {% if current_user.fname and current_user.lname %}
-            Name: {{current_user.fname}} {{current_user.lname}} <br>
-        {% else %}
-            Google User Name: {{current_user.gname}} <br>
-        {% endif %}
-        Email: {{current_user.email}} <br>
-        Phone #: {{current_user.phonenum}}<br>
-        About me: {{current_user.about}}
-        <br>
         
-    </div>
-    <!--<h1 class="display-1">Send schedule Info <a class="visible" href="/consent">
-        <img width="40" src="/static/edit.png">
-    </a></h1>
-    <div class="col display-5">Consent to send sleep info: {{current_user.consent}} <br>
-    Send to: {{current_user.adult_fname}} {{current_user.adult_lname}} <br>
-    Email: {{current_user.adult_email}}-->
-    
-        
-    
-</div>
-</div>
-<br>
+        <div class="col">
+          
+          
+            <span
+              ><h1 style="color:#8ec454;">My Profile</h1></span>
+          
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="col display-5">
+            User: {{current_user.username}}<br>
+            {% if current_user.fname and current_user.lname %}
+                Name: {{current_user.fname}} {{current_user.lname}} <br>
+            {% else %}
+                Google User Name: {{current_user.gname}} <br>
+            {% endif %}
+            Email: {{current_user.email}} <br>
+            Phone #: {{current_user.phonenum}}<br>
+            About me: {{current_user.about}}
+            <br>
+            
+        </div>
+          
+        </div>
 
+        <!-- The whole next section is for comments ON blog posts -->
+        <!-- If you are using this as a template, you'll probably delete the whole comment section -->
+      </div>
+    </div>
 
 
 {% endblock %}
+
+
+    
